@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "progetto-spfx-graph-api-client-side-solution",
+    "id": "6fe8305d-0860-4580-a35f-7034d10a87eb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
+      }
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "progetto-spfx-graph-api description"
+      },
+      "longDescription": {
+        "default": "progetto-spfx-graph-api description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "progetto-spfx-graph-api Feature",
+        "description": "The feature that activates elements of the progetto-spfx-graph-api solution.",
+        "id": "9e632f4d-1bf2-4612-892b-9e4a0b712c25",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/progetto-spfx-graph-api.sppkg"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "progetto-sp-fx-graph-api-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/progettoSpFxGraphApi/ProgettoSpFxGraphApiWebPart.js",
+          "manifest": "./src/webparts/progettoSpFxGraphApi/ProgettoSpFxGraphApiWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ProgettoSpFxGraphApiWebPartStrings": "lib/webparts/progettoSpFxGraphApi/loc/{locale}.js"
+  }
+}

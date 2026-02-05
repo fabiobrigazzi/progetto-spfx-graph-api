@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "20.20.0",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "progetto-spfx-graph-api",
+    "libraryId": "6fe8305d-0860-4580-a35f-7034d10a87eb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "progetto-spfx-graph-api",
+    "solutionShortDescription": "progetto-spfx-graph-api description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
