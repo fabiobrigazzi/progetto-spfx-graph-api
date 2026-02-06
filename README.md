@@ -1,5 +1,12 @@
 # progetto-spfx-graph-api
 
+Versioni usate:
+
+- Node: 20.20.0
+- Npm: 10.0.8
+- SPFx: 1.22
+
+
 ## Summary
 
 Short summary on functionality and used technologies.
@@ -19,7 +26,9 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+- Node: 20.20.0
+- Npm: 10.0.8
+- SPFx: 1.22
 
 ## Solution
 
