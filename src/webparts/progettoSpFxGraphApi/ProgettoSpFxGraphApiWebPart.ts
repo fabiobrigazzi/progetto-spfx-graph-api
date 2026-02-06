@@ -9,6 +9,8 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 //per graphapi
 import { MSGraphClientV3 } from '@microsoft/sp-http';
+//per auth2 e masal
+import { AuthService } from '../../services/authService';
 
 import * as strings from 'ProgettoSpFxGraphApiWebPartStrings';
 import ProgettoSpFxGraphApi from './components/ProgettoSpFxGraphApi';
@@ -24,11 +26,13 @@ export default class ProgettoSpFxGraphApiWebPart extends BaseClientSideWebPart<I
   private _environmentMessage: string = '';
 
   private graphClient!: MSGraphClientV3;
+  private authService!: AuthService;
 
   protected async onInit(): Promise<void> {
     await super.onInit();
     // Inizializza il client Graph
     this.graphClient = await this.context.msGraphClientFactory.getClient('3');
+    this.authService = AuthService.getInstance();
   }
 
   public render(): void {
@@ -41,9 +45,19 @@ export default class ProgettoSpFxGraphApiWebPart extends BaseClientSideWebPart<I
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
         graphClient: this.graphClient,
-        context: this.context
+        context: this.context,
+        onLogin: this.handleLogin,
+        onCallAPI: this.callProtectedApi
       }
     );
+
+    /*this.domElement.querySelector('#loginBtn')?.addEventListener('click', async () => {
+      await this.handleLogin();
+    });*/
+
+    /*this.domElement.querySelector('#callApiBtn')?.addEventListener('click', async () => {
+      await this.callProtectedApi();
+    });*/
 
     ReactDom.render(element, this.domElement);
   }
@@ -121,5 +135,34 @@ export default class ProgettoSpFxGraphApiWebPart extends BaseClientSideWebPart<I
         }
       ]
     };
+  }
+
+  //metodo per il Login
+  private handleLogin = async (): Promise<void> => {
+    try {
+      await this.authService.login();
+      alert('Login successful!');
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  }
+
+  //Call API per Leggere Utente
+  private callProtectedApi = async (): Promise<void> => {
+    try {
+      const token = await this.authService.getToken(['User.Read']);
+      
+      const response = await fetch('https://graph.microsoft.com/v1.0/me', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      const resultEl = this.domElement.querySelector('#result') as HTMLElement | null;
+      if (resultEl) resultEl.innerText = JSON.stringify(data, null, 2);
+    } catch (error) {
+      console.error('API call error:', error);
+    }
   }
 }

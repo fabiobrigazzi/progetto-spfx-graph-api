@@ -60,6 +60,8 @@ export default class ProgettoSpFxGraphApi extends React.Component<IProgettoSpFxG
       error: '',
       currentUser: null
     };
+
+    
   }
 
   // Ottieni utente corrente
@@ -343,7 +345,16 @@ export default class ProgettoSpFxGraphApi extends React.Component<IProgettoSpFxG
             </div>
           </div>
         </div>
+
+        <div>
+          <button id="btnLogin" onClick={() => this.props.onLogin()}>Login</button>
+          <button id="btnCallAPI" onClick={() => this.props.onCallAPI()}>CallAPI</button>
+          <div id="result">&nbsp;</div>
+        </div>
+
       </div>
+
+      
     );
   }
 }

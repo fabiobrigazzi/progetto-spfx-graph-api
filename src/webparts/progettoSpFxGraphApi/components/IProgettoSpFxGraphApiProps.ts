@@ -9,4 +9,8 @@ export interface IProgettoSpFxGraphApiProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+
+  //nuove callback
+  onLogin: () => Promise<void>;
+  onCallAPI: () => Promise<void>;
 }
